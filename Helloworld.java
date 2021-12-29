@@ -1,5 +1,27 @@
-class Helloworld {
-	public static void main(String args[]) throws Exception{
-		System.out.println("7190764181");
+import java.io.*;
+import javax.servlet.*;
+import javax.servlet.http.*;
+import com.google.gson.*;
+
+public class Helloworld extends HttpServlet {
+    
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("application/json;charset=UTF-8");
+        response.setCharacterEncoding("UTF-8");
+        PrintWriter out = response.getWriter();
+        Gson gson = new Gson();
+        Student stu = new Student("dddd");
+        String json = gson.toJson(stu);
+        out.println(json);
+        out.flush();
+        out.close();
+    }
 }
+
+ class  Student{
+    private String id;
+    public Student(String id){
+        this.id=id;
+    };
 }
